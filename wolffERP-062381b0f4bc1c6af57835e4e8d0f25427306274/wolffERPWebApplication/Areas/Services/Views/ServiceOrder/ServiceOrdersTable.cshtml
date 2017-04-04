@@ -1,0 +1,56 @@
+﻿@*
+    TO DO:
+    - Pagination?
+    - Maybe only show open orders?
+    -
+*@
+@using PagedList;
+@using PagedList.Mvc;
+@using wolffERPWebApplication.Models
+@model List<ServiceOrder>
+<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ServiceOrderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ServiceType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Customer.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Date)
+            </th>
+        </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceOrderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ServiceOrderId }) |
+                @*@Html.ActionLink("Details", "Details", new { id = item.ServiceOrderId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ServiceOrderId })*@
+            </td>
+        </tr>
+    }
+
+</table>
+

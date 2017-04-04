@@ -1,0 +1,82 @@
+﻿@* TO DO:
+        - Rest of CRUD, this page only reads.
+        - Needs to be able to remove items, update items, and add new ones.
+        - The idea is this will all be done in Bootstrap Modals
+        - Double and triple check to make sure the functionality of this page is what's expected.
+ *@
+@using wolffERPWebApplication.Models
+@model List<ServiceOrderItem>
+
+<h3>Items on this Order</h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SerialNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Service)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Fittings)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().CustomerStandardId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ServiceOrderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().OxygenCertificateId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ServiceCertificateId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ServiceOrderitemId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fittings)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerStandardId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceOrderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OxygenCertificateId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceCertificateId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceOrderitemId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ServiceOrderId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ServiceOrderId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ServiceOrderId })
+            </td>
+        </tr>
+    }
+
+</table>
+

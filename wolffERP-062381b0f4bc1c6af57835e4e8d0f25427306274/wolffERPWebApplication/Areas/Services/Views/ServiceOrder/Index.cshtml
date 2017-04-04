@@ -1,0 +1,10 @@
+﻿@* See notes in partial views! *@
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Service Orders Home</h2>
+@Html.Partial("ServiceOrderHeader")
+@Html.Partial("ServiceOrdersTable", ViewData["ServiceOrdersTable"])

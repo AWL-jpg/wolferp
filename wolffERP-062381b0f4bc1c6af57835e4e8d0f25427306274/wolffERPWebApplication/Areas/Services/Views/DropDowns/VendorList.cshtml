@@ -1,0 +1,6 @@
+﻿@using wolffERPWebApplication.Models
+@model List<Vendor>
+@foreach (var item in Model)
+{
+    <option value="@item.VendorId">@item.Name</option>
+}

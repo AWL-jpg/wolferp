@@ -1,0 +1,45 @@
+﻿@model IEnumerable<wolffERPWebApplication.Models.DropdownItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DropdownType.DropdownName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DropdownValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hidden)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DropdownType.DropdownName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DropdownValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hidden)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DropdownItemId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DropdownItemId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DropdownItemId })
+        </td>
+    </tr>
+}
+
+</table>

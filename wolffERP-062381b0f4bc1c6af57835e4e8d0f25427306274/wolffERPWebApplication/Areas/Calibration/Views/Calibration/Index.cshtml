@@ -1,0 +1,185 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div>
+
+    <h2>Calibration Document</h2>
+
+
+    <!-- 1st row-->
+    <div class="row">
+        <!-- 1st row 1st col info -->
+        <div class="col-lg-4">
+            <label for="Item#" class="col-lg-6 control-label">Item #: </label>
+            <div class="col-lg-6">
+                <input type="text" class="form-control pull-right" id="Item#" placeholder="1" readonly>
+            </div>
+        </div>
+
+        <!-- 1st row 2nd col info -->
+        <div class="col-lg-4">
+            <label for="CustomerStandardNumber" class="col-lg-6 control-label">Customer Standard: </label>
+            <div class="col-lg-6">
+                <input type="text" class="form-control pull-right" id="CustomerStandardNumber" placeholder="CS-044" readonly>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <hr />
+
+    <!-- 2nd row-->
+    <div class="row">
+        <!-- 2nd row 1st col info -->
+        <div class="col-lg-4">
+            <label for="PO#" class="col-lg-6 control-label">PO#:</label>
+            <div class="col-lg-6">
+                <input type="text" class="form-control" id="PO#" placeholder="1111111111" readonly>
+            </div>
+
+            <br />
+            <br />
+
+            <label for="SN#" class="col-lg-6 control-label">SN#: </label>
+            <div class="col-lg-6">
+                <input type="text" class="form-control" id="SN#" placeholder="1111111111" readonly>
+            </div>
+
+            <br />
+            <br />
+
+            <label for="DialSize" class="col-lg-6 control-label">Dial Size: </label>
+            <div class="col-lg-6">
+                <input type="text" class="form-control" id="DialSize" placeholder="1111111111" readonly>
+            </div>
+
+            <br />
+            <br />
+
+            <label for="Pressure" class="col-lg-6 control-label">Pressure:</label>
+            <div class="col-lg-6">
+                <input type="text" class="form-control" id="Pressure" placeholder="1111111111" readonly>
+            </div>
+        </div>
+
+        <!-- 2nd row 2nd col info -->
+        <div class="col-lg-4">
+            <label for="AmbientTemp" class="col-lg-6 control-label">Ambient Temp: </label>
+            <div class="col-lg-6">
+                <input type="text" class="form-control" id="AmbientTemp" placeholder="20 C">
+            </div>
+
+            <br />
+            <br />
+
+            <label for="Humidity" class="col-lg-6 control-label">Humidity: </label>
+            <div class="col-lg-6">
+                <input type="text" class="form-control pull-right" id="Humidity" placeholder="20%">
+            </div>
+
+            <br />
+            <br />
+
+            <label for="Deadweight" class="col-lg-6 control-label">Deadweight:</label>
+            <div class="col-lg-6">
+                <select class="form-control pull-right" id="Deadweight">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+
+            <br />
+            <br />
+
+            <label for="TestMeduim" class="col-lg-6 control-label">Test Medium:</label>
+            <div class="col-lg-6">
+                <select class="form-control pull-right" id="TestMeduim">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+
+            <br />
+            <br />
+
+            <label for="MaxError" class="col-lg-6 control-label">Max Error: </label>
+            <div class="col-lg-6">
+                <input type="text" class="form-control pull-right" id="Humidity" placeholder="-12 PSI">
+            </div>
+        </div>
+
+        <!-- 2nd row 3rd col info -->
+        <div class="col-lg-4">
+            <label for="certificate#" class="col-lg-6 control-label">Certificate #: </label>
+            <div class="col-lg-6">
+                <input type="text" class="form-control pull-right" id="certificate#" placeholder="123456" readonly>
+            </div>
+
+            <br />
+            <br />
+
+            <label for="Refere" class="col-lg-6 control-label">Reference: </label>
+            <div class="col-lg-6">
+                <input type="text" class="form-control pull-right" id="Refere" placeholder="PCL-12334434">
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <hr />
+
+    <!-- 3rd row-->
+    <div class="row">
+       @Html.Partial("../CustomerStandards/CS003");
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <label for="Technician" class="col-lg-6 control-label">Technician:</label>
+            <div class="col-lg-6">
+                <select class="form-control pull-right" id="Technician">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <label for="AllowableError" class="col-lg-6 control-label">Allowable Error: </label>
+            <div class="col-lg-6">
+                <input type="text" class="form-control" id="AllowableError" placeholder="25 PSI">
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <div class="row">
+        <!-- 3rd row Buttons-->
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-primary pull-left">PRINT</button>
+        </div>
+
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-primary pull-left">SAVE</button>
+        </div>
+
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-primary pull-left">CANCEL</button>
+        </div>
+    </div>
+</div>

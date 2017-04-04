@@ -1,0 +1,22 @@
+﻿@* See notes in partial views! *@
+@using wolffERPWebApplication.Models
+@model ServiceOrder
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@Html.Partial("ServiceOrderHeader")
+@Html.Partial("../ServiceOrderItem/Index", ViewData["ServiceOrderItemsTable"])
+@Html.Partial("../ServiceOrderItem/ServiceOrderItemModal")
+
+
+
+
+
+<script type="text/javascript">
+    $("#serviceOrderHeaderButton").text("Save Changes To Order");
+
+</script>
+

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("AdditionalScripts", false)
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                @if (User.IsInRole("Admin"))
+                {
+                    <li> @Html.ActionLink("Admin Page", "Index", "WolffAdmin", new { area = "" }, null);</li>
+                }
+                <li>@Html.ActionLink("Jaron Wolff", "Index", "Home", new { area = "" }, null)</li>
+                <li>@Html.ActionLink("Customers", "Index", "Customers", new { area = "Customers" }, null)</li>
+                <li>@Html.ActionLink("Couriers", "Index", "Couriers", new { area = "Couriers" }, null)</li>
+                <li>@Html.ActionLink("Contacts", "Index", "Contacts", new { area = "Contacts" }, null)</li>         
+                <li>@Html.ActionLink("Vendors", "Index", "Vendors", new { area = "Vendors" }, null)</li>
+                <li>@Html.ActionLink("LogBook", "Index", "LogBook", new { area = "LogBook" }, null)</li>
+                <li>@Html.ActionLink("Service Orders", "Index", "ServiceOrder", new { area = "Services" }, null)</li>
+                <li>@Html.ActionLink("Calibration", "Index", "Calibration", new { area = "calibration" }, null)</li>
+            </ul>
+        </div>
+        @Html.Partial("_LoginPartial")
+        <div class="page-content-wrapper">
+            @RenderBody()
+            <hr />
+            <footer></footer>
+        </div>
+    </div>
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

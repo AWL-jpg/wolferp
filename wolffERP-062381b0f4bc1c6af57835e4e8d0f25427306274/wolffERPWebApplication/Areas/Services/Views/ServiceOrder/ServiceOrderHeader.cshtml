@@ -1,0 +1,138 @@
+﻿@*
+    TO DO:
+    - Get rest of CRUD going, this page can only read when called on Edit, it needs to be made so it can create on Index page, and update on Edit page.
+    - Notes on ^: Call respective HTTPPost method in Index/Edit method?
+    - Make sure all needed fields are agreed upon for the header, also make sure to disable fields that shouldn't be editable
+*@
+@using wolffERPWebApplication.Models
+@model ServiceOrder
+@{
+    bool modelExists = false;
+    if (Model != null)
+    {
+        modelExists = true;
+    }
+
+}
+<div class="container">
+    <div class="row">
+        <!-- First column of info -->
+        <div class="col-lg-4">
+            <div class="col-lg-12 form-group">
+
+                <label for="serviceOrderNumber" class="col-lg-12 control-label">WO#: </label>
+                @if (modelExists)
+                {<input type="text" class="form-control col-lg-12" id="serviceOrderNumber" value="@Model.ServiceOrderId">}
+                else
+                {<input type="text" class="form-control col-lg-12" id="serviceOrderNumber" placeholder="Service Order #">}
+
+                <label for="services" class="col-lg-12 control-label">Services: </label>
+                <select class="form-control col-lg-12" id="services">
+                    @if (modelExists)
+                    { <option value="@Model.ServiceType">@Model.ServiceType</option>}
+                    <option value="Calibration and O2 Clean">Calibration and O2 Clean</option>
+                    <option value="Calibration">Calibration</option>
+                    <option value="O2 Clean">O2 Clean</option>
+                    <option value="Assembly">Assembly</option>
+                    <option value="Sublet">Sublet</option>
+                    <option value="Repair" >Repair</option>
+                </select>
+
+                <label for="date" class="col-lg-12 control-label">Date: </label>
+                @if (modelExists)
+                {<input type="datetime" class="form-control col-lg-12  " id="date" value="@Model.Date">}
+                else
+                {<input type="datetime" class="form-control col-lg-12" id="date" value="@System.DateTime.Today" disabled>}
+
+                <label for="status" class="col-lg-12 control-label">Status: </label>
+                <select class="form-control col-lg-12  " id="status">
+                    @if (modelExists)
+                    {
+                    <option value="@Model.Status">@Model.Status</option> }
+                    <option>Pending QA</option>
+                    <option>PO Required</option>
+                    <option>Calibrated</option>
+                    <option>QA Approved</option>
+                    <option>Shipped</option>
+                    <option>Ship to Vendor</option>
+                    <option>Pending</option>
+                    <option>Backordered</option>
+                    <option>Received</option>
+                    <option>Done</option>
+                </select>
+
+            </div>
+        </div>
+
+    <!-- Second column of info -->
+        <div class="col-lg-4 col-sm-4">
+            <div class="col-lg-12 form-group">
+
+                <label for="jaronWolffPurchaseOrderNumber" class="col-lg-12 control-label">JW PO#:</label>
+                @if (modelExists)
+                {<input type="text" class="form-control col-lg-12  " id="jaronWolffPurchaseOrderNumber" value="@Model.PurchaseOrderNumber">}
+                else
+                {<input type="text" class="form-control col-lg-12" id="jaronWolffPurchaseOrderNumber" placeholder="JW PO#">}
+
+                <label for="subletPO" class="col-lg-12 control-label">Sublet PO#: </label>
+                @if (modelExists)
+                {<input type="text" class="form-control col-lg-12  " id="subletPO" value="@Model.SubletPONumber">}
+                else
+                {<input type="text" class="form-control col-lg-12" id="subletPO" placeholder="Sublet PO#">}
+
+                <label for="customers" class="col-lg-12 control-label">Customer: </label>
+                <select class="form-control col-lg-12" id="customers">
+                    @if (modelExists) { <option value="@Model.CustomerId">@Model.Customer.Name</option> }
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+
+                <label for="contact" class="col-lg-12 control-label">Contact:</label>
+                @if (modelExists)
+                {<input type="text" class="form-control col-lg-12  " id="contact" value="@Model.Contact.Name">}
+                else
+                {<input type="text" class="form-control col-lg-12" id="contact" placeholder="Contact">}
+
+            </div>
+        </div>
+
+        <!-- Third column of info -->
+        <div class="col-lg-4 col-sm-4">
+            <div class="col-lg-12   form-group">
+
+                <label for="vendors" class="col-lg-12 control-label">Vendor: </label>
+                <select class="form-control col-lg-12" id="vendor">
+                    @if (modelExists)
+                    {
+                        <option value="@Model.VendorId">@Model.Vendor.Name</option>
+                    }
+                    @Html.Partial("../DropDowns/VendorList", ViewData["VendorList"])
+                </select>
+
+                <label for="courier" class="col-lg-12 control-label">Courier:</label>
+                <select class="form-control col-lg-12" id="courier">
+                    @if (modelExists)
+                    {
+                        <option value="@Model.Courier.CourierId">@Model.Courier.Name</option>
+                    }
+                    @Html.Partial("../DropDowns/CourierList", ViewData["CourierList"])
+                </select>
+
+                <div class="checkbox col-lg-12">
+                    <label for="rushed" class="col-lg-12 checkbox-inline control-label">
+                        @if (modelExists && Model.Rushed == "Y")
+                        {<input type="checkbox" value="" id="rushCheckbox" checked>}
+                        else
+                        {<input type="checkbox" value="" id="rushCheckbox">} Rushed
+                    </label>
+                </div>
+
+                <label for="serviceOrderHeaderButton" class="col-lg-12 control-label"> </label>
+                <button type="button" class="btn btn-primary" id="serviceOrderHeaderButton">Create Service Order</button>
+            </div>
+        </div>
+    </div>
+</div>

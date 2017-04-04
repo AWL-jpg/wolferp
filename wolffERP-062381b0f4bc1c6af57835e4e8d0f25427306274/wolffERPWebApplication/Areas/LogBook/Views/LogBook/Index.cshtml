@@ -1,0 +1,112 @@
+﻿@model IEnumerable<wolffERPWebApplication.Areas.LogBook.Models.LogBookItem>
+
+@{
+    ViewBag.Title = "LogBook";
+}
+
+@section AdditionalScripts{
+    <!-- tablesorter plugin -->
+    <script type="text/javascript" src="~/Scripts/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.tablesorter.js"></script>
+    <link rel="stylesheet" href="~/Content/themes/base/theme.blue.css">
+
+    <!-- tablesorter widget file - loaded after the plugin -->
+    <script type="text/javascript" src="~/Scripts/jquery.tablesorter.widgets.js"></script>
+    <script type="text/javascript" id="js">
+        function showPopup(PropertyName) {
+            $("#search-form").dialog({
+                height: 100,
+                width: 300,
+                modal: true,
+                buttons: {
+                    "Filter": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            })
+        }
+        $(function () {
+            $("#soItemsTable").tablesorter();
+        });
+    </script>
+}
+
+<h2>LogBook - Index</h2>
+<!-- Search popup -->
+<div id="search-form" title="Search" style="display:none; background-color:white; border:1px solid black; border-radius:4px;">
+    @using (Html.BeginForm()) {
+        <fieldset>
+            <label for="SearchString">
+                Filter @Html.Label("PropertyName") by:
+            </label>
+            @Html.TextBox("SearchString")
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px" value="Filter">
+        </fieldset>
+    }
+</div>
+<!-- Table to show logbook items -->
+<table class="table tablesorter" id="soItemsTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SerialNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceOrderNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CalibrationCertificateNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OxygenCertificateNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+            <th></th>
+            <!-- Only reveal if deadweight functionality is complete!
+            <th></th>
+            -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SerialNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ServiceOrderNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CalibrationCertificateNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OxygenCertificateNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.ActionLink("Service Order", "Edit", new { id = item.ServiceOrderitemId })
+                </td>
+                <td>
+                    @Html.ActionLink("Calibration", "Edit", new { id = item.ServiceOrderitemId })
+                </td>
+                <td>
+                    @* Only reveal if deadweight functionality is complete!
+                        @Html.ActionLink("Deadweight", "Edit", new { id=item.ServiceOrderitemId })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
